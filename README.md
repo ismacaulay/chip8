@@ -20,13 +20,13 @@ different ways.
 
 There are a few goals of the project that I hope to complete by the time it is finish.
 
-[] Understand how to build an emulator
-[] Implement a TUI application that can run chip-8 roms
-[] Compile the emulator for wasm, to run chip-8 roms in the browser
+- [ ] Understand how to build an emulator
+- [ ] Implement a TUI application that can run chip-8 roms
+- [ ] Compile the emulator for wasm, to run chip-8 roms in the browser
 
 Stretch goals
-[] Implement a chip-8 program, and successfully run it on the emulator
-[] Build a debugger that can control the flow of the emulator, and inspect the memory
+- [ ] Implement a chip-8 program, and successfully run it on the emulator
+- [ ] Build a debugger that can control the flow of the emulator, and inspect the memory
 
 ### Design
 
@@ -46,7 +46,7 @@ The different target platforms support differnet ways of rendering to the screen
 support this, the enumlation will implement an observer pattern to pass the display buffer
 back to users of the emulation when it is updated.
 
-### Keyboard
+#### Keyboard
 
 Just like the display, the different target platforms handle user input differently. To
 support this, the emulator will need to be able to accept an input buffer from the
