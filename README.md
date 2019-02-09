@@ -55,6 +55,6 @@ this can be done with a 16 bit integer.
 
 ### References
 
-Specification: http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#1nnn
-Wikipedia: https://en.wikipedia.org/wiki/CHIP-8#Memory
-How to write an emulator: http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/
+- Specification: http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#1nnn
+- Wikipedia: https://en.wikipedia.org/wiki/CHIP-8#Memory
+- How to write an emulator: http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/
