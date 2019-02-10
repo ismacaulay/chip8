@@ -5,10 +5,10 @@ import (
 )
 
 type instruction2 struct {
-	registers registers.RegisterReaderWriter
+	registers registers.ReaderWriter
 }
 
-func newInstruction2(r registers.RegisterReaderWriter) *instruction2 {
+func newInstruction2(r registers.ReaderWriter) *instruction2 {
 	return &instruction2{r}
 }
 

@@ -10,7 +10,7 @@ import (
 
 func TestInstruction4(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
+	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstruction4(registers)
 
 	cases := []struct {

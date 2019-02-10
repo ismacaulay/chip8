@@ -11,7 +11,7 @@ import (
 
 func TestInstructionC(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
+	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstructionC(registers)
 
 	t.Run("[Cxkk] Set Vx = random byte AND kk", func(t *testing.T) {

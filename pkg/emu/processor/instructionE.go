@@ -7,10 +7,10 @@ import (
 
 type instructionE struct {
 	keyboard  keyboard.Keyboard
-	registers registers.RegisterReaderWriter
+	registers registers.ReaderWriter
 }
 
-func newInstructionE(k keyboard.Keyboard, r registers.RegisterReaderWriter) *instructionE {
+func newInstructionE(k keyboard.Keyboard, r registers.ReaderWriter) *instructionE {
 	return &instructionE{k, r}
 }
 

@@ -1,7 +1,7 @@
 package registers
 
-// RegisterReaderWriter interface provide functions to interact with the registers
-type RegisterReaderWriter interface {
+// ReaderWriter interface provide functions to interact with the registers
+type ReaderWriter interface {
 	SetProgramCounter(address uint16)
 	IncrementProgramCounter(increment uint16)
 	PushProgramCounter()

@@ -9,10 +9,10 @@ import (
 type instructionD struct {
 	display   display.Display
 	memory    memory.ReaderWriter
-	registers registers.RegisterReaderWriter
+	registers registers.ReaderWriter
 }
 
-func newInstructionD(d display.Display, m memory.ReaderWriter, r registers.RegisterReaderWriter) *instructionD {
+func newInstructionD(d display.Display, m memory.ReaderWriter, r registers.ReaderWriter) *instructionD {
 	return &instructionD{d, m, r}
 }
 

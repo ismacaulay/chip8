@@ -9,10 +9,10 @@ import (
 type instructionF struct {
 	keyboard  keyboard.Keyboard
 	memory    memory.ReaderWriter
-	registers registers.RegisterReaderWriter
+	registers registers.ReaderWriter
 }
 
-func newInstructionF(k keyboard.Keyboard, m memory.ReaderWriter, r registers.RegisterReaderWriter) *instructionF {
+func newInstructionF(k keyboard.Keyboard, m memory.ReaderWriter, r registers.ReaderWriter) *instructionF {
 	return &instructionF{k, m, r}
 }
 

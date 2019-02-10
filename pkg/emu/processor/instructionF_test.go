@@ -15,7 +15,7 @@ func TestInstructionF(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	keyboard := mock_keyboard.NewMockKeyboard(ctrl)
 	memory := mock_memory.NewMockReaderWriter(ctrl)
-	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
+	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstructionF(keyboard, memory, registers)
 
 	t.Run("[Fx07] Load delay timer into Vx", func(t *testing.T) {

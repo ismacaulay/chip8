@@ -12,7 +12,7 @@ import (
 func TestInstruction0(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	display := mock_display.NewMockDisplay(ctrl)
-	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
+	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstruction0(display, registers)
 
 	t.Run("[00E0] Clear the display", func(t *testing.T) {

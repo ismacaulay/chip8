@@ -15,7 +15,7 @@ type Processor struct {
 	instructions []instruction
 }
 
-func NewProcessor(d display.Display, k keyboard.Keyboard, m memory.ReaderWriter, r registers.RegisterReaderWriter) *Processor {
+func NewProcessor(d display.Display, k keyboard.Keyboard, m memory.ReaderWriter, r registers.ReaderWriter) *Processor {
 	processor := Processor{}
 	processor.instructions = []instruction{
 		newInstruction0(d, r),

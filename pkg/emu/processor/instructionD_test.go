@@ -15,7 +15,7 @@ func TestInstructionD(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	display := mock_display.NewMockDisplay(ctrl)
 	memory := mock_memory.NewMockReaderWriter(ctrl)
-	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
+	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstructionD(display, memory, registers)
 
 	cases := []struct {

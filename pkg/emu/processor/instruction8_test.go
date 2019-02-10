@@ -11,7 +11,7 @@ import (
 
 func TestInstruction8(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
+	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstruction8(registers)
 
 	t.Run("[8xy0] Set Vx = Vy", func(t *testing.T) {

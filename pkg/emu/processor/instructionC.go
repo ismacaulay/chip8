@@ -6,10 +6,10 @@ import (
 )
 
 type instructionC struct {
-	registers registers.RegisterReaderWriter
+	registers registers.ReaderWriter
 }
 
-func newInstructionC(r registers.RegisterReaderWriter) *instructionC {
+func newInstructionC(r registers.ReaderWriter) *instructionC {
 	return &instructionC{r}
 }
 

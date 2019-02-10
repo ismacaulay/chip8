@@ -9,7 +9,7 @@ import (
 
 func TestInstruction7(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
+	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstruction7(registers)
 
 	t.Run("[7xkk] Set Vx = Vx + kk", func(t *testing.T) {

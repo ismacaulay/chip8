@@ -7,10 +7,10 @@ import (
 
 type instruction0 struct {
 	display   display.Display
-	registers registers.RegisterReaderWriter
+	registers registers.ReaderWriter
 }
 
-func newInstruction0(d display.Display, r registers.RegisterReaderWriter) *instruction0 {
+func newInstruction0(d display.Display, r registers.ReaderWriter) *instruction0 {
 	return &instruction0{d, r}
 }
 
