@@ -11,7 +11,7 @@ import (
 
 func TestInstruction0(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	display := mock_display.NewMockDisplay(ctrl)
+	display := mock_display.NewMockWriter(ctrl)
 	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstruction0(display, registers)
 

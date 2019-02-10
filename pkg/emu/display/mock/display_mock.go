@@ -9,43 +9,43 @@ import (
 	reflect "reflect"
 )
 
-// MockDisplay is a mock of Display interface
-type MockDisplay struct {
+// MockWriter is a mock of Writer interface
+type MockWriter struct {
 	ctrl     *gomock.Controller
-	recorder *MockDisplayMockRecorder
+	recorder *MockWriterMockRecorder
 }
 
-// MockDisplayMockRecorder is the mock recorder for MockDisplay
-type MockDisplayMockRecorder struct {
-	mock *MockDisplay
+// MockWriterMockRecorder is the mock recorder for MockWriter
+type MockWriterMockRecorder struct {
+	mock *MockWriter
 }
 
-// NewMockDisplay creates a new mock instance
-func NewMockDisplay(ctrl *gomock.Controller) *MockDisplay {
-	mock := &MockDisplay{ctrl: ctrl}
-	mock.recorder = &MockDisplayMockRecorder{mock}
+// NewMockWriter creates a new mock instance
+func NewMockWriter(ctrl *gomock.Controller) *MockWriter {
+	mock := &MockWriter{ctrl: ctrl}
+	mock.recorder = &MockWriterMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use
-func (m *MockDisplay) EXPECT() *MockDisplayMockRecorder {
+func (m *MockWriter) EXPECT() *MockWriterMockRecorder {
 	return m.recorder
 }
 
 // Clear mocks base method
-func (m *MockDisplay) Clear() {
+func (m *MockWriter) Clear() {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "Clear")
 }
 
 // Clear indicates an expected call of Clear
-func (mr *MockDisplayMockRecorder) Clear() *gomock.Call {
+func (mr *MockWriterMockRecorder) Clear() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Clear", reflect.TypeOf((*MockDisplay)(nil).Clear))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Clear", reflect.TypeOf((*MockWriter)(nil).Clear))
 }
 
 // DisplaySprites mocks base method
-func (m *MockDisplay) DisplaySprites(x, y uint8, data []uint8) bool {
+func (m *MockWriter) DisplaySprites(x, y uint8, data []uint8) bool {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "DisplaySprites", x, y, data)
 	ret0, _ := ret[0].(bool)
@@ -53,7 +53,7 @@ func (m *MockDisplay) DisplaySprites(x, y uint8, data []uint8) bool {
 }
 
 // DisplaySprites indicates an expected call of DisplaySprites
-func (mr *MockDisplayMockRecorder) DisplaySprites(x, y, data interface{}) *gomock.Call {
+func (mr *MockWriterMockRecorder) DisplaySprites(x, y, data interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisplaySprites", reflect.TypeOf((*MockDisplay)(nil).DisplaySprites), x, y, data)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DisplaySprites", reflect.TypeOf((*MockWriter)(nil).DisplaySprites), x, y, data)
 }

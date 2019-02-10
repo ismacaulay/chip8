@@ -13,7 +13,7 @@ import (
 
 func TestInstructionD(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	display := mock_display.NewMockDisplay(ctrl)
+	display := mock_display.NewMockWriter(ctrl)
 	memory := mock_memory.NewMockReaderWriter(ctrl)
 	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstructionD(display, memory, registers)

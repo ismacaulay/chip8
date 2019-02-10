@@ -7,12 +7,12 @@ import (
 )
 
 type instructionD struct {
-	display   display.Display
+	display   display.Writer
 	memory    memory.ReaderWriter
 	registers registers.ReaderWriter
 }
 
-func newInstructionD(d display.Display, m memory.ReaderWriter, r registers.ReaderWriter) *instructionD {
+func newInstructionD(d display.Writer, m memory.ReaderWriter, r registers.ReaderWriter) *instructionD {
 	return &instructionD{d, m, r}
 }
 

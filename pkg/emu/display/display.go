@@ -1,16 +1,16 @@
 package display
 
-type Display interface {
+type Writer interface {
 	Clear()
 	DisplaySprites(x, y uint8, data []uint8) bool
 }
 
-type Chip8Display struct {
+type Display struct {
 }
 
-func (d *Chip8Display) Clear() {
+func (d *Display) Clear() {
 }
 
-func (d *Chip8Display) DisplaySprites(x, y uint8, data []uint8) bool {
+func (d *Display) DisplaySprites(x, y uint8, data []uint8) bool {
 	return false
 }
