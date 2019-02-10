@@ -9,67 +9,67 @@ import (
 	reflect "reflect"
 )
 
-// MockRegisters is a mock of Registers interface
-type MockRegisters struct {
+// MockRegisterReaderWriter is a mock of RegisterReaderWriter interface
+type MockRegisterReaderWriter struct {
 	ctrl     *gomock.Controller
-	recorder *MockRegistersMockRecorder
+	recorder *MockRegisterReaderWriterMockRecorder
 }
 
-// MockRegistersMockRecorder is the mock recorder for MockRegisters
-type MockRegistersMockRecorder struct {
-	mock *MockRegisters
+// MockRegisterReaderWriterMockRecorder is the mock recorder for MockRegisterReaderWriter
+type MockRegisterReaderWriterMockRecorder struct {
+	mock *MockRegisterReaderWriter
 }
 
-// NewMockRegisters creates a new mock instance
-func NewMockRegisters(ctrl *gomock.Controller) *MockRegisters {
-	mock := &MockRegisters{ctrl: ctrl}
-	mock.recorder = &MockRegistersMockRecorder{mock}
+// NewMockRegisterReaderWriter creates a new mock instance
+func NewMockRegisterReaderWriter(ctrl *gomock.Controller) *MockRegisterReaderWriter {
+	mock := &MockRegisterReaderWriter{ctrl: ctrl}
+	mock.recorder = &MockRegisterReaderWriterMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use
-func (m *MockRegisters) EXPECT() *MockRegistersMockRecorder {
+func (m *MockRegisterReaderWriter) EXPECT() *MockRegisterReaderWriterMockRecorder {
 	return m.recorder
 }
 
 // SetProgramCounter mocks base method
-func (m *MockRegisters) SetProgramCounter(address uint16) {
+func (m *MockRegisterReaderWriter) SetProgramCounter(address uint16) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "SetProgramCounter", address)
 }
 
 // SetProgramCounter indicates an expected call of SetProgramCounter
-func (mr *MockRegistersMockRecorder) SetProgramCounter(address interface{}) *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) SetProgramCounter(address interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetProgramCounter", reflect.TypeOf((*MockRegisters)(nil).SetProgramCounter), address)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetProgramCounter", reflect.TypeOf((*MockRegisterReaderWriter)(nil).SetProgramCounter), address)
 }
 
 // IncrementProgramCounter mocks base method
-func (m *MockRegisters) IncrementProgramCounter(increment int) {
+func (m *MockRegisterReaderWriter) IncrementProgramCounter(increment uint16) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "IncrementProgramCounter", increment)
 }
 
 // IncrementProgramCounter indicates an expected call of IncrementProgramCounter
-func (mr *MockRegistersMockRecorder) IncrementProgramCounter(increment interface{}) *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) IncrementProgramCounter(increment interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncrementProgramCounter", reflect.TypeOf((*MockRegisters)(nil).IncrementProgramCounter), increment)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncrementProgramCounter", reflect.TypeOf((*MockRegisterReaderWriter)(nil).IncrementProgramCounter), increment)
 }
 
 // PushProgramCounter mocks base method
-func (m *MockRegisters) PushProgramCounter() {
+func (m *MockRegisterReaderWriter) PushProgramCounter() {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "PushProgramCounter")
 }
 
 // PushProgramCounter indicates an expected call of PushProgramCounter
-func (mr *MockRegistersMockRecorder) PushProgramCounter() *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) PushProgramCounter() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PushProgramCounter", reflect.TypeOf((*MockRegisters)(nil).PushProgramCounter))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PushProgramCounter", reflect.TypeOf((*MockRegisterReaderWriter)(nil).PushProgramCounter))
 }
 
 // PopProgramCounter mocks base method
-func (m *MockRegisters) PopProgramCounter() uint16 {
+func (m *MockRegisterReaderWriter) PopProgramCounter() uint16 {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "PopProgramCounter")
 	ret0, _ := ret[0].(uint16)
@@ -77,13 +77,13 @@ func (m *MockRegisters) PopProgramCounter() uint16 {
 }
 
 // PopProgramCounter indicates an expected call of PopProgramCounter
-func (mr *MockRegistersMockRecorder) PopProgramCounter() *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) PopProgramCounter() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PopProgramCounter", reflect.TypeOf((*MockRegisters)(nil).PopProgramCounter))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PopProgramCounter", reflect.TypeOf((*MockRegisterReaderWriter)(nil).PopProgramCounter))
 }
 
 // GetRegisterValue mocks base method
-func (m *MockRegisters) GetRegisterValue(register uint8) uint8 {
+func (m *MockRegisterReaderWriter) GetRegisterValue(register uint8) uint8 {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetRegisterValue", register)
 	ret0, _ := ret[0].(uint8)
@@ -91,37 +91,37 @@ func (m *MockRegisters) GetRegisterValue(register uint8) uint8 {
 }
 
 // GetRegisterValue indicates an expected call of GetRegisterValue
-func (mr *MockRegistersMockRecorder) GetRegisterValue(register interface{}) *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) GetRegisterValue(register interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRegisterValue", reflect.TypeOf((*MockRegisters)(nil).GetRegisterValue), register)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRegisterValue", reflect.TypeOf((*MockRegisterReaderWriter)(nil).GetRegisterValue), register)
 }
 
 // SetRegisterValue mocks base method
-func (m *MockRegisters) SetRegisterValue(register, value uint8) {
+func (m *MockRegisterReaderWriter) SetRegisterValue(register, value uint8) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "SetRegisterValue", register, value)
 }
 
 // SetRegisterValue indicates an expected call of SetRegisterValue
-func (mr *MockRegistersMockRecorder) SetRegisterValue(register, value interface{}) *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) SetRegisterValue(register, value interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetRegisterValue", reflect.TypeOf((*MockRegisters)(nil).SetRegisterValue), register, value)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetRegisterValue", reflect.TypeOf((*MockRegisterReaderWriter)(nil).SetRegisterValue), register, value)
 }
 
 // SetRegisterI mocks base method
-func (m *MockRegisters) SetRegisterI(value uint16) {
+func (m *MockRegisterReaderWriter) SetRegisterI(value uint16) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "SetRegisterI", value)
 }
 
 // SetRegisterI indicates an expected call of SetRegisterI
-func (mr *MockRegistersMockRecorder) SetRegisterI(value interface{}) *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) SetRegisterI(value interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetRegisterI", reflect.TypeOf((*MockRegisters)(nil).SetRegisterI), value)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetRegisterI", reflect.TypeOf((*MockRegisterReaderWriter)(nil).SetRegisterI), value)
 }
 
 // GetRegisterI mocks base method
-func (m *MockRegisters) GetRegisterI() uint16 {
+func (m *MockRegisterReaderWriter) GetRegisterI() uint16 {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetRegisterI")
 	ret0, _ := ret[0].(uint16)
@@ -129,25 +129,25 @@ func (m *MockRegisters) GetRegisterI() uint16 {
 }
 
 // GetRegisterI indicates an expected call of GetRegisterI
-func (mr *MockRegistersMockRecorder) GetRegisterI() *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) GetRegisterI() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRegisterI", reflect.TypeOf((*MockRegisters)(nil).GetRegisterI))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRegisterI", reflect.TypeOf((*MockRegisterReaderWriter)(nil).GetRegisterI))
 }
 
 // SetDelayTimer mocks base method
-func (m *MockRegisters) SetDelayTimer(value uint8) {
+func (m *MockRegisterReaderWriter) SetDelayTimer(value uint8) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "SetDelayTimer", value)
 }
 
 // SetDelayTimer indicates an expected call of SetDelayTimer
-func (mr *MockRegistersMockRecorder) SetDelayTimer(value interface{}) *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) SetDelayTimer(value interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetDelayTimer", reflect.TypeOf((*MockRegisters)(nil).SetDelayTimer), value)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetDelayTimer", reflect.TypeOf((*MockRegisterReaderWriter)(nil).SetDelayTimer), value)
 }
 
 // GetDelayTimer mocks base method
-func (m *MockRegisters) GetDelayTimer() uint8 {
+func (m *MockRegisterReaderWriter) GetDelayTimer() uint8 {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetDelayTimer")
 	ret0, _ := ret[0].(uint8)
@@ -155,25 +155,25 @@ func (m *MockRegisters) GetDelayTimer() uint8 {
 }
 
 // GetDelayTimer indicates an expected call of GetDelayTimer
-func (mr *MockRegistersMockRecorder) GetDelayTimer() *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) GetDelayTimer() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDelayTimer", reflect.TypeOf((*MockRegisters)(nil).GetDelayTimer))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDelayTimer", reflect.TypeOf((*MockRegisterReaderWriter)(nil).GetDelayTimer))
 }
 
 // SetSoundTimer mocks base method
-func (m *MockRegisters) SetSoundTimer(value uint8) {
+func (m *MockRegisterReaderWriter) SetSoundTimer(value uint8) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "SetSoundTimer", value)
 }
 
 // SetSoundTimer indicates an expected call of SetSoundTimer
-func (mr *MockRegistersMockRecorder) SetSoundTimer(value interface{}) *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) SetSoundTimer(value interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetSoundTimer", reflect.TypeOf((*MockRegisters)(nil).SetSoundTimer), value)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetSoundTimer", reflect.TypeOf((*MockRegisterReaderWriter)(nil).SetSoundTimer), value)
 }
 
 // GetSoundTimer mocks base method
-func (m *MockRegisters) GetSoundTimer() uint8 {
+func (m *MockRegisterReaderWriter) GetSoundTimer() uint8 {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetSoundTimer")
 	ret0, _ := ret[0].(uint8)
@@ -181,7 +181,7 @@ func (m *MockRegisters) GetSoundTimer() uint8 {
 }
 
 // GetSoundTimer indicates an expected call of GetSoundTimer
-func (mr *MockRegistersMockRecorder) GetSoundTimer() *gomock.Call {
+func (mr *MockRegisterReaderWriterMockRecorder) GetSoundTimer() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSoundTimer", reflect.TypeOf((*MockRegisters)(nil).GetSoundTimer))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSoundTimer", reflect.TypeOf((*MockRegisterReaderWriter)(nil).GetSoundTimer))
 }

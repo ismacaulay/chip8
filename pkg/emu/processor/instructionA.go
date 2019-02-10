@@ -5,15 +5,15 @@ import (
 )
 
 type instructionA struct {
-	registers registers.Registers
+	registers registers.RegisterReaderWriter
 }
 
-func newInstructionA(r registers.Registers) *instructionA {
+func newInstructionA(r registers.RegisterReaderWriter) *instructionA {
 	return &instructionA{r}
 }
 
 func (i *instructionA) execute(opcode uint16) {
 	value := opcode & 0x0FFF
 	i.registers.SetRegisterI(value)
-	i.registers.IncrementProgramCounter(1)
+	i.registers.IncrementProgramCounter(uint16(1))
 }

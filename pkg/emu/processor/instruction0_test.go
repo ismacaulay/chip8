@@ -12,12 +12,12 @@ import (
 func TestInstruction0(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	display := mock_display.NewMockDisplay(ctrl)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstruction0(display, registers)
 
 	t.Run("[00E0] Clear the display", func(t *testing.T) {
 		display.EXPECT().Clear()
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x0E0)
 
@@ -35,7 +35,7 @@ func TestInstruction0(t *testing.T) {
 	})
 
 	t.Run("[0---] Igore all other opcodes", func(t *testing.T) {
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x0123)
 

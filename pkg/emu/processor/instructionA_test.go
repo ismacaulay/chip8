@@ -10,13 +10,13 @@ import (
 
 func TestInstructionA(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstructionA(registers)
 
 	t.Run("[Annn] Set I = nnn", func(t *testing.T) {
 		value := uint16(42)
 		registers.EXPECT().SetRegisterI(value)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x000) | value
 

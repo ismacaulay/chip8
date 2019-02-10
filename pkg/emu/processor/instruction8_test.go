@@ -11,7 +11,7 @@ import (
 
 func TestInstruction8(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstruction8(registers)
 
 	t.Run("[8xy0] Set Vx = Vy", func(t *testing.T) {
@@ -20,7 +20,7 @@ func TestInstruction8(t *testing.T) {
 		registers.EXPECT().GetRegisterValue(uint8(0x01)).Return(vxValue)
 		registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(vyValue)
 		registers.EXPECT().SetRegisterValue(uint8(0x01), vyValue)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x1C0)
 
@@ -33,7 +33,7 @@ func TestInstruction8(t *testing.T) {
 		registers.EXPECT().GetRegisterValue(uint8(0x01)).Return(vxValue)
 		registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(vyValue)
 		registers.EXPECT().SetRegisterValue(uint8(0x01), vxValue|vyValue)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x1C1)
 
@@ -46,7 +46,7 @@ func TestInstruction8(t *testing.T) {
 		registers.EXPECT().GetRegisterValue(uint8(0x01)).Return(vxValue)
 		registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(vyValue)
 		registers.EXPECT().SetRegisterValue(uint8(0x01), vxValue&vyValue)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x1C2)
 
@@ -59,7 +59,7 @@ func TestInstruction8(t *testing.T) {
 		registers.EXPECT().GetRegisterValue(uint8(0x01)).Return(vxValue)
 		registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(vyValue)
 		registers.EXPECT().SetRegisterValue(uint8(0x01), vxValue^vyValue)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x1C3)
 
@@ -79,7 +79,7 @@ func TestInstruction8(t *testing.T) {
 			registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(c.vyValue)
 			registers.EXPECT().SetRegisterValue(uint8(0x01), uint8(c.vxValue+c.vyValue))
 			registers.EXPECT().SetRegisterValue(uint8(0x0F), c.expectedVf)
-			registers.EXPECT().IncrementProgramCounter(1)
+			registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 			opcode := uint16(0x1C4)
 
@@ -100,7 +100,7 @@ func TestInstruction8(t *testing.T) {
 			registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(c.vyValue)
 			registers.EXPECT().SetRegisterValue(uint8(0x01), uint8(c.vxValue-c.vyValue))
 			registers.EXPECT().SetRegisterValue(uint8(0x0F), c.expectedVf)
-			registers.EXPECT().IncrementProgramCounter(1)
+			registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 			opcode := uint16(0x1C5)
 
@@ -121,7 +121,7 @@ func TestInstruction8(t *testing.T) {
 			registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(c.vyValue)
 			registers.EXPECT().SetRegisterValue(uint8(0x01), uint8(c.vxValue>>1))
 			registers.EXPECT().SetRegisterValue(uint8(0x0F), c.expectedVf)
-			registers.EXPECT().IncrementProgramCounter(1)
+			registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 			opcode := uint16(0x1C6)
 
@@ -142,7 +142,7 @@ func TestInstruction8(t *testing.T) {
 			registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(c.vyValue)
 			registers.EXPECT().SetRegisterValue(uint8(0x01), uint8(c.vyValue-c.vxValue))
 			registers.EXPECT().SetRegisterValue(uint8(0x0F), c.expectedVf)
-			registers.EXPECT().IncrementProgramCounter(1)
+			registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 			opcode := uint16(0x1C7)
 
@@ -163,7 +163,7 @@ func TestInstruction8(t *testing.T) {
 			registers.EXPECT().GetRegisterValue(uint8(0x0C)).Return(c.vyValue)
 			registers.EXPECT().SetRegisterValue(uint8(0x01), uint8(c.vxValue<<1))
 			registers.EXPECT().SetRegisterValue(uint8(0x0F), c.expectedVf)
-			registers.EXPECT().IncrementProgramCounter(1)
+			registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 			opcode := uint16(0x1CE)
 

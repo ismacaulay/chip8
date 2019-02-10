@@ -7,10 +7,10 @@ import (
 
 type instructionE struct {
 	keyboard  keyboard.Keyboard
-	registers registers.Registers
+	registers registers.RegisterReaderWriter
 }
 
-func newInstructionE(k keyboard.Keyboard, r registers.Registers) *instructionE {
+func newInstructionE(k keyboard.Keyboard, r registers.RegisterReaderWriter) *instructionE {
 	return &instructionE{k, r}
 }
 
@@ -23,15 +23,15 @@ func (i *instructionE) execute(opcode uint16) {
 	switch subInstruction {
 	case 0x9E:
 		if i.keyboard.IsPressed(vxValue) {
-			i.registers.IncrementProgramCounter(2)
+			i.registers.IncrementProgramCounter(uint16(2))
 		} else {
-			i.registers.IncrementProgramCounter(1)
+			i.registers.IncrementProgramCounter(uint16(1))
 		}
 	case 0xA1:
 		if !i.keyboard.IsPressed(vxValue) {
-			i.registers.IncrementProgramCounter(2)
+			i.registers.IncrementProgramCounter(uint16(2))
 		} else {
-			i.registers.IncrementProgramCounter(1)
+			i.registers.IncrementProgramCounter(uint16(1))
 		}
 	}
 

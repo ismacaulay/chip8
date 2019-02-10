@@ -9,7 +9,7 @@ import (
 
 func TestInstruction1(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstruction1(registers)
 
 	t.Run("[1nnn] Jump to location nnn", func(t *testing.T) {

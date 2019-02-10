@@ -15,7 +15,7 @@ func TestInstructionD(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	display := mock_display.NewMockDisplay(ctrl)
 	memory := mock_memory.NewMockMemory(ctrl)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstructionD(display, memory, registers)
 
 	cases := []struct {
@@ -41,7 +41,7 @@ func TestInstructionD(t *testing.T) {
 			memory.EXPECT().ReadNBytes(iValue, n).Return(data)
 			display.EXPECT().DisplaySprites(vxValue, vyValue, data).Return(c.collision)
 			registers.EXPECT().SetRegisterValue(uint8(0x0F), c.expectedVf)
-			registers.EXPECT().IncrementProgramCounter(1)
+			registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 			opcode := uint16(0x2A0) | uint16(n)
 

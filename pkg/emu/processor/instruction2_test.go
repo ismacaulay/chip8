@@ -9,7 +9,7 @@ import (
 
 func TestInstruction2(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstruction2(registers)
 
 	t.Run("[2nnn] Call subroutine at nnn", func(t *testing.T) {

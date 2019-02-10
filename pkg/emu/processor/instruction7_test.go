@@ -9,7 +9,7 @@ import (
 
 func TestInstruction7(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstruction7(registers)
 
 	t.Run("[7xkk] Set Vx = Vx + kk", func(t *testing.T) {
@@ -17,7 +17,7 @@ func TestInstruction7(t *testing.T) {
 		value := uint8(103)
 		registers.EXPECT().GetRegisterValue(uint8(0x01)).Return(vxValue)
 		registers.EXPECT().SetRegisterValue(uint8(0x01), vxValue+value)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x100) | uint16(value)
 

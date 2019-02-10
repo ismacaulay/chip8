@@ -5,10 +5,10 @@ import (
 )
 
 type instruction5 struct {
-	registers registers.Registers
+	registers registers.RegisterReaderWriter
 }
 
-func newInstruction5(r registers.Registers) *instruction5 {
+func newInstruction5(r registers.RegisterReaderWriter) *instruction5 {
 	return &instruction5{r}
 }
 
@@ -19,8 +19,8 @@ func (i *instruction5) execute(opcode uint16) {
 	vyValue := i.registers.GetRegisterValue(vy)
 
 	if vxValue == vyValue {
-		i.registers.IncrementProgramCounter(2)
+		i.registers.IncrementProgramCounter(uint16(2))
 	} else {
-		i.registers.IncrementProgramCounter(1)
+		i.registers.IncrementProgramCounter(uint16(1))
 	}
 }

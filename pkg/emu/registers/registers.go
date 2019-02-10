@@ -1,8 +1,9 @@
 package registers
 
-type Registers interface {
+// RegisterReaderWriter interface provide functions to interact with the registers
+type RegisterReaderWriter interface {
 	SetProgramCounter(address uint16)
-	IncrementProgramCounter(increment int)
+	IncrementProgramCounter(increment uint16)
 	PushProgramCounter()
 	PopProgramCounter() uint16
 	GetRegisterValue(register uint8) uint8
@@ -15,32 +16,89 @@ type Registers interface {
 	GetSoundTimer() uint8
 }
 
-type Chip8Registers struct {
+// Registers is the implementation of the Registers interface
+type Registers struct {
+	v          []uint8
+	i          uint16
+	pc         uint16
+	sp         uint8
+	stack      []uint16
+	delayTimer uint8
+	soundTimer uint8
 }
 
-func (r *Chip8Registers) SetProgramCounter(address uint16) {
+// NewRegisters creates a new instance of Registers
+func NewRegisters() *Registers {
+	return &Registers{
+		v:          make([]uint8, 16),
+		i:          0,
+		pc:         0,
+		sp:         0,
+		stack:      make([]uint16, 16),
+		delayTimer: 0,
+		soundTimer: 0,
+	}
 }
 
-func (r *Chip8Registers) IncrementProgramCounter(increment int) {
+// SetProgramCounter updates the program counter to the new address
+func (r *Registers) SetProgramCounter(address uint16) {
+	r.pc = address
 }
 
-func (r *Chip8Registers) PushProgramCounter() {
+// IncrementProgramCounter increments the program counter by the specified amount
+func (r *Registers) IncrementProgramCounter(increment uint16) {
+	r.pc = r.pc + increment
 }
 
-func (r *Chip8Registers) PopProgramCounter() uint16 {
-	return 0
+// PushProgramCounter saves the current program counter on the stack
+func (r *Registers) PushProgramCounter() {
+	r.stack[r.sp] = r.pc
+	r.sp++
 }
 
-func (r *Chip8Registers) GetRegisterValue(register uint8) uint8 {
-	return 0
+// PopProgramCounter removes the current program counter off the top of the stack
+// and returns it
+func (r *Registers) PopProgramCounter() uint16 {
+	r.sp--
+	return r.stack[r.sp]
 }
 
-func (r *Chip8Registers) SetRegisterValue(register, value uint8) {
+// GetRegisterValue returns the value of the register
+func (r *Registers) GetRegisterValue(register uint8) uint8 {
+	return r.v[register]
 }
 
-func (r *Chip8Registers) SetRegisterI(value uint16) {
+// SetRegisterValue sets the value of the register
+func (r *Registers) SetRegisterValue(register, value uint8) {
+	r.v[register] = value
 }
 
-func (r *Chip8Registers) GetRegisterI() uint16 {
-	return 0
+// SetRegisterI sets the value of register I
+func (r *Registers) SetRegisterI(value uint16) {
+	r.i = value
+}
+
+// GetRegisterI return the value of register I
+func (r *Registers) GetRegisterI() uint16 {
+	return r.i
+}
+
+// SetDelayTimer sets the delay timer value
+func (r *Registers) SetDelayTimer(value uint8) {
+	r.delayTimer = value
+}
+
+// GetDelayTimer returns the delay timer value
+func (r *Registers) GetDelayTimer() uint8 {
+	return r.delayTimer
+}
+
+// SetSoundTimer sets the sound timer value
+func (r *Registers) SetSoundTimer(value uint8) {
+	r.soundTimer = value
+}
+
+// GetSoundTimer returns the sound timer value
+func (r *Registers) GetSoundTimer() uint8 {
+	return r.soundTimer
 }

@@ -11,12 +11,12 @@ import (
 
 func TestInstruction9(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstruction9(registers)
 
 	cases := []struct {
 		vxValue, vyValue  uint8
-		expectedIncrement int
+		expectedIncrement uint16
 	}{
 		{uint8(42), uint8(43), 2},
 		{uint8(42), uint8(42), 1},

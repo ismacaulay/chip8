@@ -9,10 +9,10 @@ import (
 type instructionD struct {
 	display   display.Display
 	memory    memory.Memory
-	registers registers.Registers
+	registers registers.RegisterReaderWriter
 }
 
-func newInstructionD(d display.Display, m memory.Memory, r registers.Registers) *instructionD {
+func newInstructionD(d display.Display, m memory.Memory, r registers.RegisterReaderWriter) *instructionD {
 	return &instructionD{d, m, r}
 }
 
@@ -33,5 +33,5 @@ func (i *instructionD) execute(opcode uint16) {
 		i.registers.SetRegisterValue(0x0F, uint8(0))
 	}
 
-	i.registers.IncrementProgramCounter(1)
+	i.registers.IncrementProgramCounter(uint16(1))
 }

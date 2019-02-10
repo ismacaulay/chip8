@@ -13,12 +13,12 @@ import (
 func TestInstructionE(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	keyboard := mock_keyboard.NewMockKeyboard(ctrl)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstructionE(keyboard, registers)
 
 	cases := []struct {
 		isPressed         bool
-		expectedIncrement int
+		expectedIncrement uint16
 	}{
 		{true, 2},
 		{false, 1},
@@ -39,7 +39,7 @@ func TestInstructionE(t *testing.T) {
 
 	cases = []struct {
 		isPressed         bool
-		expectedIncrement int
+		expectedIncrement uint16
 	}{
 		{false, 2},
 		{true, 1},

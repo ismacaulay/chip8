@@ -15,14 +15,14 @@ func TestInstructionF(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	keyboard := mock_keyboard.NewMockKeyboard(ctrl)
 	memory := mock_memory.NewMockMemory(ctrl)
-	registers := mock_registers.NewMockRegisters(ctrl)
+	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstructionF(keyboard, memory, registers)
 
 	t.Run("[Fx07] Load delay timer into Vx", func(t *testing.T) {
 		dt := uint8(234)
 		registers.EXPECT().GetDelayTimer().Return(dt)
 		registers.EXPECT().SetRegisterValue(uint8(0x0C), dt)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0xC07)
 
@@ -33,7 +33,7 @@ func TestInstructionF(t *testing.T) {
 		key := uint8(0x5)
 		keyboard.EXPECT().GetKeyPress().Return(key)
 		registers.EXPECT().SetRegisterValue(uint8(0x0E), key)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0xE0A)
 
@@ -44,7 +44,7 @@ func TestInstructionF(t *testing.T) {
 		value := uint8(123)
 		registers.EXPECT().GetRegisterValue(uint8(0x0A)).Return(value)
 		registers.EXPECT().SetDelayTimer(value)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0xA15)
 
@@ -55,7 +55,7 @@ func TestInstructionF(t *testing.T) {
 		value := uint8(123)
 		registers.EXPECT().GetRegisterValue(uint8(0x0A)).Return(value)
 		registers.EXPECT().SetSoundTimer(value)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0xA18)
 
@@ -68,7 +68,7 @@ func TestInstructionF(t *testing.T) {
 		registers.EXPECT().GetRegisterValue(uint8(0x07)).Return(vxValue)
 		registers.EXPECT().GetRegisterI().Return(iValue)
 		registers.EXPECT().SetRegisterI(iValue + uint16(vxValue))
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x71E)
 
@@ -81,7 +81,7 @@ func TestInstructionF(t *testing.T) {
 		registers.EXPECT().GetRegisterValue(uint8(0x07)).Return(vxValue)
 		memory.EXPECT().GetHexDigitAddress(vxValue).Return(spriteAddr)
 		registers.EXPECT().SetRegisterI(spriteAddr)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x729)
 
@@ -96,7 +96,7 @@ func TestInstructionF(t *testing.T) {
 		memory.EXPECT().WriteValue(uint16(iValue), uint8(0))
 		memory.EXPECT().WriteValue(uint16(iValue+1), uint8(3))
 		memory.EXPECT().WriteValue(uint16(iValue+2), uint8(9))
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x733)
 
@@ -113,7 +113,7 @@ func TestInstructionF(t *testing.T) {
 			memory.EXPECT().WriteValue(iValue+uint16(i), value)
 		}
 		rand.Seed(42)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0xE55)
 
@@ -130,7 +130,7 @@ func TestInstructionF(t *testing.T) {
 			registers.EXPECT().SetRegisterValue(i, value)
 		}
 		rand.Seed(42)
-		registers.EXPECT().IncrementProgramCounter(1)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0xE65)
 

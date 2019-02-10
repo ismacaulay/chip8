@@ -9,10 +9,10 @@ import (
 type instructionF struct {
 	keyboard  keyboard.Keyboard
 	memory    memory.Memory
-	registers registers.Registers
+	registers registers.RegisterReaderWriter
 }
 
-func newInstructionF(k keyboard.Keyboard, m memory.Memory, r registers.Registers) *instructionF {
+func newInstructionF(k keyboard.Keyboard, m memory.Memory, r registers.RegisterReaderWriter) *instructionF {
 	return &instructionF{k, m, r}
 }
 
@@ -61,5 +61,5 @@ func (i *instructionF) execute(opcode uint16) {
 		}
 	}
 
-	i.registers.IncrementProgramCounter(1)
+	i.registers.IncrementProgramCounter(uint16(1))
 }
