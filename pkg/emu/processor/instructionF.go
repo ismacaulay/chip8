@@ -8,11 +8,11 @@ import (
 
 type instructionF struct {
 	keyboard  keyboard.Keyboard
-	memory    memory.Memory
+	memory    memory.ReaderWriter
 	registers registers.RegisterReaderWriter
 }
 
-func newInstructionF(k keyboard.Keyboard, m memory.Memory, r registers.RegisterReaderWriter) *instructionF {
+func newInstructionF(k keyboard.Keyboard, m memory.ReaderWriter, r registers.RegisterReaderWriter) *instructionF {
 	return &instructionF{k, m, r}
 }
 

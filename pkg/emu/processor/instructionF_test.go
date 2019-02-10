@@ -14,7 +14,7 @@ import (
 func TestInstructionF(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	keyboard := mock_keyboard.NewMockKeyboard(ctrl)
-	memory := mock_memory.NewMockMemory(ctrl)
+	memory := mock_memory.NewMockReaderWriter(ctrl)
 	registers := mock_registers.NewMockRegisterReaderWriter(ctrl)
 	instruction := newInstructionF(keyboard, memory, registers)
 

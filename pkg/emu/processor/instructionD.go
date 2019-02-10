@@ -8,11 +8,11 @@ import (
 
 type instructionD struct {
 	display   display.Display
-	memory    memory.Memory
+	memory    memory.ReaderWriter
 	registers registers.RegisterReaderWriter
 }
 
-func newInstructionD(d display.Display, m memory.Memory, r registers.RegisterReaderWriter) *instructionD {
+func newInstructionD(d display.Display, m memory.ReaderWriter, r registers.RegisterReaderWriter) *instructionD {
 	return &instructionD{d, m, r}
 }
 
