@@ -9,31 +9,31 @@ import (
 	reflect "reflect"
 )
 
-// MockKeyboard is a mock of Keyboard interface
-type MockKeyboard struct {
+// MockReader is a mock of Reader interface
+type MockReader struct {
 	ctrl     *gomock.Controller
-	recorder *MockKeyboardMockRecorder
+	recorder *MockReaderMockRecorder
 }
 
-// MockKeyboardMockRecorder is the mock recorder for MockKeyboard
-type MockKeyboardMockRecorder struct {
-	mock *MockKeyboard
+// MockReaderMockRecorder is the mock recorder for MockReader
+type MockReaderMockRecorder struct {
+	mock *MockReader
 }
 
-// NewMockKeyboard creates a new mock instance
-func NewMockKeyboard(ctrl *gomock.Controller) *MockKeyboard {
-	mock := &MockKeyboard{ctrl: ctrl}
-	mock.recorder = &MockKeyboardMockRecorder{mock}
+// NewMockReader creates a new mock instance
+func NewMockReader(ctrl *gomock.Controller) *MockReader {
+	mock := &MockReader{ctrl: ctrl}
+	mock.recorder = &MockReaderMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use
-func (m *MockKeyboard) EXPECT() *MockKeyboardMockRecorder {
+func (m *MockReader) EXPECT() *MockReaderMockRecorder {
 	return m.recorder
 }
 
 // IsPressed mocks base method
-func (m *MockKeyboard) IsPressed(key uint8) bool {
+func (m *MockReader) IsPressed(key uint8) bool {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "IsPressed", key)
 	ret0, _ := ret[0].(bool)
@@ -41,21 +41,19 @@ func (m *MockKeyboard) IsPressed(key uint8) bool {
 }
 
 // IsPressed indicates an expected call of IsPressed
-func (mr *MockKeyboardMockRecorder) IsPressed(key interface{}) *gomock.Call {
+func (mr *MockReaderMockRecorder) IsPressed(key interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsPressed", reflect.TypeOf((*MockKeyboard)(nil).IsPressed), key)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsPressed", reflect.TypeOf((*MockReader)(nil).IsPressed), key)
 }
 
 // GetKeyPress mocks base method
-func (m *MockKeyboard) GetKeyPress() uint8 {
+func (m *MockReader) GetKeyPress(cb func(uint8)) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetKeyPress")
-	ret0, _ := ret[0].(uint8)
-	return ret0
+	m.ctrl.Call(m, "GetKeyPress", cb)
 }
 
 // GetKeyPress indicates an expected call of GetKeyPress
-func (mr *MockKeyboardMockRecorder) GetKeyPress() *gomock.Call {
+func (mr *MockReaderMockRecorder) GetKeyPress(cb interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetKeyPress", reflect.TypeOf((*MockKeyboard)(nil).GetKeyPress))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetKeyPress", reflect.TypeOf((*MockReader)(nil).GetKeyPress), cb)
 }

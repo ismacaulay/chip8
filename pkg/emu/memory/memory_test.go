@@ -29,7 +29,7 @@ func TestMemory(t *testing.T) {
 			memory.WriteValue(start+uint16(i), value)
 		}
 
-		data := memory.ReadNBytes(start, 16)
+		data := memory.ReadBytes(start, 16)
 		if len(data) != len(values) {
 			t.Error("Lengths not equal. Expected", len(values), "got", len(data))
 		}

@@ -24,7 +24,7 @@ func (i *instructionD) execute(opcode uint16) {
 	n := extractNibbleThree(opcode)
 	start := i.registers.GetRegisterI()
 
-	data := i.memory.ReadNBytes(start, n)
+	data := i.memory.ReadBytes(start, n)
 	collision := i.display.DisplaySprites(vxValue, vyValue, data)
 
 	if collision {

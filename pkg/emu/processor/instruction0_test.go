@@ -28,6 +28,7 @@ func TestInstruction0(t *testing.T) {
 		address := uint16(0x1234)
 		registers.EXPECT().PopProgramCounter().Return(address)
 		registers.EXPECT().SetProgramCounter(address)
+		registers.EXPECT().IncrementProgramCounter(uint16(1))
 
 		opcode := uint16(0x0EE)
 

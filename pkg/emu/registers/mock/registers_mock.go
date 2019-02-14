@@ -44,6 +44,20 @@ func (mr *MockReaderWriterMockRecorder) SetProgramCounter(address interface{}) *
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetProgramCounter", reflect.TypeOf((*MockReaderWriter)(nil).SetProgramCounter), address)
 }
 
+// GetProgramCounter mocks base method
+func (m *MockReaderWriter) GetProgramCounter() uint16 {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetProgramCounter")
+	ret0, _ := ret[0].(uint16)
+	return ret0
+}
+
+// GetProgramCounter indicates an expected call of GetProgramCounter
+func (mr *MockReaderWriterMockRecorder) GetProgramCounter() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetProgramCounter", reflect.TypeOf((*MockReaderWriter)(nil).GetProgramCounter))
+}
+
 // IncrementProgramCounter mocks base method
 func (m *MockReaderWriter) IncrementProgramCounter(increment uint16) {
 	m.ctrl.T.Helper()

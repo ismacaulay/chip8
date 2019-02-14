@@ -58,18 +58,30 @@ func (mr *MockReaderWriterMockRecorder) WriteValue(addr, value interface{}) *gom
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WriteValue", reflect.TypeOf((*MockReaderWriter)(nil).WriteValue), addr, value)
 }
 
-// ReadNBytes mocks base method
-func (m *MockReaderWriter) ReadNBytes(start uint16, n uint8) []uint8 {
+// ReadBytes mocks base method
+func (m *MockReaderWriter) ReadBytes(start uint16, n uint8) []uint8 {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ReadNBytes", start, n)
+	ret := m.ctrl.Call(m, "ReadBytes", start, n)
 	ret0, _ := ret[0].([]uint8)
 	return ret0
 }
 
-// ReadNBytes indicates an expected call of ReadNBytes
-func (mr *MockReaderWriterMockRecorder) ReadNBytes(start, n interface{}) *gomock.Call {
+// ReadBytes indicates an expected call of ReadBytes
+func (mr *MockReaderWriterMockRecorder) ReadBytes(start, n interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadNBytes", reflect.TypeOf((*MockReaderWriter)(nil).ReadNBytes), start, n)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadBytes", reflect.TypeOf((*MockReaderWriter)(nil).ReadBytes), start, n)
+}
+
+// WriteBytes mocks base method
+func (m *MockReaderWriter) WriteBytes(start uint16, data []uint8) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "WriteBytes", start, data)
+}
+
+// WriteBytes indicates an expected call of WriteBytes
+func (mr *MockReaderWriterMockRecorder) WriteBytes(start, data interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WriteBytes", reflect.TypeOf((*MockReaderWriter)(nil).WriteBytes), start, data)
 }
 
 // GetHexDigitAddress mocks base method

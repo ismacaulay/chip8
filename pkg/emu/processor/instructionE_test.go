@@ -12,7 +12,7 @@ import (
 
 func TestInstructionE(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	keyboard := mock_keyboard.NewMockKeyboard(ctrl)
+	keyboard := mock_keyboard.NewMockReader(ctrl)
 	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstructionE(keyboard, registers)
 

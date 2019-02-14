@@ -38,7 +38,7 @@ func TestInstructionD(t *testing.T) {
 			registers.EXPECT().GetRegisterValue(vx).Return(vxValue)
 			registers.EXPECT().GetRegisterValue(vy).Return(vyValue)
 			registers.EXPECT().GetRegisterI().Return(iValue)
-			memory.EXPECT().ReadNBytes(iValue, n).Return(data)
+			memory.EXPECT().ReadBytes(iValue, n).Return(data)
 			display.EXPECT().DisplaySprites(vxValue, vyValue, data).Return(c.collision)
 			registers.EXPECT().SetRegisterValue(uint8(0x0F), c.expectedVf)
 			registers.EXPECT().IncrementProgramCounter(uint16(1))

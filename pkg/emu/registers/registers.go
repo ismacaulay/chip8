@@ -3,13 +3,16 @@ package registers
 // ReaderWriter interface provide functions to interact with the registers
 type ReaderWriter interface {
 	SetProgramCounter(address uint16)
+	GetProgramCounter() uint16
 	IncrementProgramCounter(increment uint16)
 	PushProgramCounter()
 	PopProgramCounter() uint16
+
 	GetRegisterValue(register uint8) uint8
 	SetRegisterValue(register, value uint8)
 	SetRegisterI(value uint16)
 	GetRegisterI() uint16
+
 	SetDelayTimer(value uint8)
 	GetDelayTimer() uint8
 	SetSoundTimer(value uint8)
@@ -32,7 +35,7 @@ func NewRegisters() *Registers {
 	return &Registers{
 		v:          make([]uint8, 16),
 		i:          0,
-		pc:         0,
+		pc:         0x200,
 		sp:         0,
 		stack:      make([]uint16, 16),
 		delayTimer: 0,
@@ -45,9 +48,14 @@ func (r *Registers) SetProgramCounter(address uint16) {
 	r.pc = address
 }
 
+// GetProgramCounter returns the current value of the program counter
+func (r *Registers) GetProgramCounter() uint16 {
+	return r.pc
+}
+
 // IncrementProgramCounter increments the program counter by the specified amount
 func (r *Registers) IncrementProgramCounter(increment uint16) {
-	r.pc = r.pc + increment
+	r.pc = r.pc + (2 * increment)
 }
 
 // PushProgramCounter saves the current program counter on the stack

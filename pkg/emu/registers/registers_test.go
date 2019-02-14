@@ -39,7 +39,7 @@ func TestRegisters(t *testing.T) {
 		}
 	})
 
-	t.Run("Can increment program counter by increment", func(t *testing.T) {
+	t.Run("Can increment program counter by increment times 2", func(t *testing.T) {
 		registers := NewRegisters()
 		value := uint16(2345)
 		registers.SetProgramCounter(value)
@@ -48,7 +48,7 @@ func TestRegisters(t *testing.T) {
 
 		registers.PushProgramCounter()
 		pc := registers.PopProgramCounter()
-		if pc != value+3 {
+		if pc != value+6 {
 			t.Error("Expected", value, "got", pc)
 		}
 	})

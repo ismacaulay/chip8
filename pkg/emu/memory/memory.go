@@ -4,7 +4,10 @@ package memory
 type ReaderWriter interface {
 	ReadValue(addr uint16) uint8
 	WriteValue(addr uint16, value uint8)
-	ReadNBytes(start uint16, n uint8) []uint8
+
+	ReadBytes(start uint16, n uint8) []uint8
+	WriteBytes(start uint16, data []uint8)
+
 	GetHexDigitAddress(digit uint8) uint16
 }
 
@@ -48,9 +51,14 @@ func (m *Memory) WriteValue(addr uint16, value uint8) {
 	m.buffer[addr] = value
 }
 
-// ReadNBytes reads n bytes starting from start address
-func (m *Memory) ReadNBytes(start uint16, n uint8) []uint8 {
+// ReadBytes reads n bytes starting from start address
+func (m *Memory) ReadBytes(start uint16, n uint8) []uint8 {
 	return m.buffer[start : start+uint16(n)]
+}
+
+// WriteBytes writes bytes to memory starting from start address
+func (m *Memory) WriteBytes(start uint16, data []uint8) {
+	copy(m.buffer[start:], data)
 }
 
 // GetHexDigitAddress returns the address of the first byte of the

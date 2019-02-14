@@ -13,7 +13,7 @@ import (
 
 func TestInstructionF(t *testing.T) {
 	ctrl := gomock.NewController(t)
-	keyboard := mock_keyboard.NewMockKeyboard(ctrl)
+	keyboard := mock_keyboard.NewMockReader(ctrl)
 	memory := mock_memory.NewMockReaderWriter(ctrl)
 	registers := mock_registers.NewMockReaderWriter(ctrl)
 	instruction := newInstructionF(keyboard, memory, registers)
@@ -31,7 +31,9 @@ func TestInstructionF(t *testing.T) {
 
 	t.Run("[Fx0A] Wait for keypress and store key value in Vx", func(t *testing.T) {
 		key := uint8(0x5)
-		keyboard.EXPECT().GetKeyPress().Return(key)
+		keyboard.EXPECT().GetKeyPress(gomock.Any()).Do(func(cb func(uint8)) {
+			cb(key)
+		})
 		registers.EXPECT().SetRegisterValue(uint8(0x0E), key)
 		registers.EXPECT().IncrementProgramCounter(uint16(1))
 

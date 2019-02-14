@@ -6,11 +6,11 @@ import (
 )
 
 type instructionE struct {
-	keyboard  keyboard.Keyboard
+	keyboard  keyboard.Reader
 	registers registers.ReaderWriter
 }
 
-func newInstructionE(k keyboard.Keyboard, r registers.ReaderWriter) *instructionE {
+func newInstructionE(k keyboard.Reader, r registers.ReaderWriter) *instructionE {
 	return &instructionE{k, r}
 }
 

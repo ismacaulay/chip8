@@ -18,11 +18,9 @@ func (i *instruction0) execute(opcode uint16) {
 	switch opcode {
 	case 0x00E0:
 		i.display.Clear()
-		i.registers.IncrementProgramCounter(uint16(1))
 	case 0x00EE:
 		address := i.registers.PopProgramCounter()
 		i.registers.SetProgramCounter(address)
-	default:
-		i.registers.IncrementProgramCounter(uint16(1))
 	}
+	i.registers.IncrementProgramCounter(uint16(1))
 }

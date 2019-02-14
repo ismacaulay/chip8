@@ -7,12 +7,12 @@ import (
 )
 
 type instructionF struct {
-	keyboard  keyboard.Keyboard
+	keyboard  keyboard.Reader
 	memory    memory.ReaderWriter
 	registers registers.ReaderWriter
 }
 
-func newInstructionF(k keyboard.Keyboard, m memory.ReaderWriter, r registers.ReaderWriter) *instructionF {
+func newInstructionF(k keyboard.Reader, m memory.ReaderWriter, r registers.ReaderWriter) *instructionF {
 	return &instructionF{k, m, r}
 }
 
@@ -25,8 +25,9 @@ func (i *instructionF) execute(opcode uint16) {
 		dt := i.registers.GetDelayTimer()
 		i.registers.SetRegisterValue(vx, dt)
 	case 0x0A:
-		key := i.keyboard.GetKeyPress()
-		i.registers.SetRegisterValue(vx, key)
+		i.keyboard.GetKeyPress(func(key uint8) {
+			i.registers.SetRegisterValue(vx, key)
+		})
 	case 0x15:
 		vxValue := i.registers.GetRegisterValue(vx)
 		i.registers.SetDelayTimer(vxValue)
