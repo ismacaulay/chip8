@@ -53,8 +53,13 @@ support this, the emulator will need to be able to accept an input buffer from t
 applications to indicate the current keyboard state. Since the keyboard is a hex keyboard,
 this can be done with a 16 bit integer.
 
+### Roms
+
+The roms in the roms folder were found at https://github.com/dmatlack/chip8/tree/master/roms. I did not write these, but included them incase they disappeared one day.
+
 ### References
 
 - Specification: http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#1nnn
 - Wikipedia: https://en.wikipedia.org/wiki/CHIP-8#Memory
 - How to write an emulator: http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/
+- Roms: https://github.com/dmatlack/chip8/tree/master/roms

@@ -10,3 +10,7 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+cmd/cli/cli
+cmd/tui/tui
+.DS_Store

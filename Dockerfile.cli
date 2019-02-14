@@ -1,0 +1,8 @@
+FROM alpine:latest
+
+RUN mkdir -p /roms
+COPY ./roms /roms
+
+COPY ./cmd/cli/cli /usr/local/bin/chip8-cli
+
+CMD ["chip8-cli"]

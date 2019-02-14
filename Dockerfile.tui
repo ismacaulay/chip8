@@ -1,0 +1,8 @@
+FROM alpine:latest
+
+RUN mkdir -p /roms
+COPY ./roms /roms
+
+COPY ./cmd/tui/tui /usr/local/bin/chip8-tui
+
+CMD ["chip8-tui"]
