@@ -59,7 +59,7 @@ The roms in the roms folder were found at https://github.com/dmatlack/chip8/tree
 
 ### References
 
-- Specification: http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#1nnn
-- Wikipedia: https://en.wikipedia.org/wiki/CHIP-8#Memory
+- Specification: http://devernay.free.fr/hacks/chip8/C8TECH10.HTM
+- Wikipedia: https://en.wikipedia.org/wiki/CHIP-8
 - How to write an emulator: http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/
 - Roms: https://github.com/dmatlack/chip8/tree/master/roms
